@@ -1,0 +1,18 @@
+{
+    "Version": "2012-10-17",
+    "Id": "s3EventSNS",
+    "Statement": [
+      {
+        "Sid": "s3EventSNSNotification",
+        "Effect": "Allow",
+        "Principal": "*",
+        "Action": "sns:Publish",
+        "Resource": "arn:aws:sns:ap-south-1:148073982404:s3notification",
+        "Condition": {
+          "ArnLike": {
+            "aws:SourceArn": "arn:aws:s3:::storage-demo-ctl"
+          }
+        }
+      }
+    ]
+  }
