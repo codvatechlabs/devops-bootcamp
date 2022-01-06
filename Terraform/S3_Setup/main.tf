@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "my_s3_bucket" {
-  bucket = "netflif1699"
+  bucket = var.aws_s3_bucket_name
   acl    = "public-read"
 
   tags = {
