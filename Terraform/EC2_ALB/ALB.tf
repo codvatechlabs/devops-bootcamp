@@ -16,7 +16,7 @@ resource "aws_lb_target_group" "phpalbtarget" {
   name     = "phpalbtarget"
   port     = 80
   protocol = "HTTP"
-  vpc_id   = "vpc-d13ac5ba"
+  vpc_id   = "vpc-18824b73"
    health_check {
     port     = 80
     protocol = "HTTP"
