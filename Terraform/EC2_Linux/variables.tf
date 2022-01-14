@@ -20,7 +20,7 @@ variable "volume_size" {
 
 variable "ec2_key_name" {
   type    = string
-  default = "chaitanya32q1"
+  default = "terraform"
 }
 
 variable "subnet_name" {

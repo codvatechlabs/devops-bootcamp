@@ -5,7 +5,7 @@ variable "instance_type" {
 
 variable "ami_id" {
   type    = string
-  default = "ami-052cef05d01020f1d"
+  default = "ami-0a7b049697326f626"
 }
 
 variable "volume_type" {
@@ -20,7 +20,7 @@ variable "volume_size" {
 
 variable "ec2_key_name" {
   type    = string
-  default = "chaitanya32q1"
+  default = "terraform"
 }
 
 variable "subnet_name" {
