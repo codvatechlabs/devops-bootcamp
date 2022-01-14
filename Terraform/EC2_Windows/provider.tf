@@ -1,6 +1,4 @@
 provider "aws" {
-  region     = "ap-south-1"
-  access_key = "YOUR_ACCESS_KEY"
-  secret_key = "YOUR_SECRET_KEY"
-  version    = "~> 2.7"
+  region                  = "ap-south-1"
+  shared_credentials_file = "/Users/lenovo/.aws/creds"   ####Aad Your path here#####
 }
