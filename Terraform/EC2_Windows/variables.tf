@@ -15,7 +15,7 @@ variable "volume_type" {
 
 variable "volume_size" {
   type    = string
-  default = "10"
+  default = "30"
 }
 
 variable "ec2_key_name" {
@@ -31,7 +31,7 @@ variable "subnet_name" {
 variable "tag_values" {
   type = map(any)
   default = {
-    "Name"             = "ec2-tf-demo",
+    "Name"             = "Windows_Terraform_Demo",
     "Created_By"       = "Terraform_Automation",
     "Application_Name" = "Terraform_Demo"
   }
