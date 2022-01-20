@@ -33,8 +33,9 @@ variable "subnet_name" {
 variable "tag_values" {
   type = map(any)
   default = {
-    "Name"             = "ec2-tf-demo",
+    "Name"             = "ALB-Terraform-demo",
     "Created_By"       = "Terraform_Automation",
     "Application_Name" = "Terraform_Demo"
   }
 }
+

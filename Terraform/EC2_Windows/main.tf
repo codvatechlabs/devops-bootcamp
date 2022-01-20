@@ -29,7 +29,7 @@ resource "aws_security_group" "Windows_Demo" {
     description = "allow_all SSH and inbound"
   }
   ingress {
-    #RDP
+    #SSH
     from_port   = 3389
     to_port     = 3389
     protocol    = "tcp"
