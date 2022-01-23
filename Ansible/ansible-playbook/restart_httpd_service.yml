@@ -7,4 +7,3 @@
           state: restarted
           enabled: yes
     register: restart
-
