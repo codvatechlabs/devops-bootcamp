@@ -1,0 +1,9 @@
+- name: Restart httpd webserver
+  hosts: all
+  tasks:
+  - name: restart service
+    service:
+          name: "httpd"
+          state: restarted
+          enabled: yes
+    register: restart

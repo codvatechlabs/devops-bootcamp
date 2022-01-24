@@ -1,0 +1,6 @@
+- hosts: all
+  tasks:
+  - name: Install Telnet packages
+    yum:
+      name: telnet
+      state: latest
