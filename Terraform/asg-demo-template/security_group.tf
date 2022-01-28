@@ -1,9 +1,5 @@
 resource "aws_security_group" "allow_http" {
-  name = lookup(
-    var.security_group_name,
-    terraform.workspace,
-    lookup(var.security_group_name, "default", ""),
-  )
+  name        = var.security_group_name
   description = "Allow HTTP inbound traffic,Allow all outbound traffic"
 
   ingress {
@@ -13,6 +9,15 @@ resource "aws_security_group" "allow_http" {
     protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
     description = "allow http inbound"
+  }
+
+  ingress {
+    #http
+    from_port   = 22
+    to_port     = 22
+    protocol    = "TCP"
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "allow ssh inbound"
   }
 
   egress {

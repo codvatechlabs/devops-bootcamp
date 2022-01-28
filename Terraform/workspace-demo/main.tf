@@ -1,9 +1,9 @@
 resource "aws_instance" "ec2_terraform" {
-  ami           = var.ami_id
+  ami = var.ami_id
   instance_type = lookup(
-     var.instance_type,
-     terraform.workspace,
-     lookup(var.instance_type,"default",""),
+    var.instance_type,
+    terraform.workspace,
+    lookup(var.instance_type, "default", ""),
   )
 
   root_block_device {
