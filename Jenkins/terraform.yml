@@ -1,0 +1,36 @@
+pipeline {
+  agent any
+  parameters {
+    choice(
+      name: 'Env',
+      choices: ['Create', 'Destroy'],
+      description: 'Passing the Environment'
+    )
+  }
+
+  stages {
+      stage('GIT_Clone') {
+        steps {
+        checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/codvatechlabs/tf-jenkins.git']]]
+           }
+        }
+        stage('Terraform_Setup') {
+            steps {
+                script {
+                    if (params.Env == "Create") {
+                       echo "I am Create"
+                       sh "terraform init -input=false"
+                       sh "terraform apply --auto-approve -input=false"
+                        
+                    } else {
+                       echo "I am Destroy"
+                       sh "terraform init -input=false"
+                       sh "terraform destroy --auto-approve -input=false"
+                        
+                    }
+                }
+            }
+        }
+    
+  }
+}
