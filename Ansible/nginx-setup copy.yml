@@ -1,0 +1,6 @@
+- hosts: PrometheusServer
+  roles:
+    - prometheus
+    - grafana
+    - prometheus_grafana
+    - prometheus_node_exporter

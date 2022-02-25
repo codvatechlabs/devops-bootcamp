@@ -1,0 +1,12 @@
+- hosts: all
+  tasks:
+  - name: Install Packages
+    yum:
+      name:
+        - ruby
+        - telnet
+        - git
+        - wget
+      state: latest
+      update_cache: true
+    become: true

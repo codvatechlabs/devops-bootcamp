@@ -1,0 +1,5 @@
+- hosts: prometheus
+  roles:
+    - prometheus
+    - grafana
+    - prometheus_grafana

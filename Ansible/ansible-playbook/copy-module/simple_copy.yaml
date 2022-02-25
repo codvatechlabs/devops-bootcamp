@@ -1,0 +1,7 @@
+- name: This is to copy single  file  from source to destination
+  hosts: all
+  tasks:
+  - name: copy file from local host to remote host (absolute path)
+    copy:
+      src: /etc/ansible/playbook/demo.html
+      dest: /tmp/

@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+  - name: Install GIT packages
+    yum:
+      name: git
+      state: absent
+      autoremove: true
+    become: true

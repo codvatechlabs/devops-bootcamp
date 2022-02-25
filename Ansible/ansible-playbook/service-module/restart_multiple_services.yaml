@@ -1,0 +1,12 @@
+- name: This is to restart multiple services
+  hosts: all
+  tasks:
+  - name: restart multiple services
+    service:
+      name: "{{ item }}"
+      state: restarted
+      enabled: true
+    become: true
+    loop:
+      - httpd
+      - rsyslog

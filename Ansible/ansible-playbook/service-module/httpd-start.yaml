@@ -1,0 +1,7 @@
+- name: This is restart httpd webserver
+  hosts: all
+  tasks:
+  - name: ensure httpd is running
+    service:
+      name: httpd
+      state: started

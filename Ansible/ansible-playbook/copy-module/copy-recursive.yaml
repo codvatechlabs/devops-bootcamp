@@ -1,0 +1,7 @@
+- name: This is to copy all files from source to destination
+  hosts: all
+  tasks:
+  - name: copy all files from local host to remote host
+    copy:
+      src: /etc/ansible/playbook/.
+      dest: /tmp/

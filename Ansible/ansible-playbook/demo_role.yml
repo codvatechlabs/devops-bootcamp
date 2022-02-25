@@ -1,0 +1,5 @@
+---
+- hosts: demo
+  become: true
+  roles:
+    - httpd
