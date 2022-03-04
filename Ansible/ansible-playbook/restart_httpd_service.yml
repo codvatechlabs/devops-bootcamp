@@ -1,5 +1,5 @@
 - name: Restart httpd webserver
-  hosts: all
+  hosts: demo
   tasks:
   - name: restart service
     service:

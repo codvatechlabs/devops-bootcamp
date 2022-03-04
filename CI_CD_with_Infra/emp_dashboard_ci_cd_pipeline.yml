@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Build') {
+            steps {
+                echo 'Hello Continuous Build Phase'
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/CodvaTech-Labs/java_crud_demo.git']]]
+                sh '''
+                cd CrudDemoWithMySql
+                mvn --version
+                mvn clean
+                mvn deploy
+                '''
+            }
+        }
+        stage('Build_Infra') {
+            steps {
+                echo 'Emp-Dashboard-Built-Infra-Using-Terraform'
+                build 'emp_dashboard_infra_deployment'
+            }
+        } 
+        stage('Deploy') {
+            steps {
+                echo 'Hello Deploy Phase'
+                ansiblePlaybook credentialsId: 'ec2-user', installation: 'Ansible', inventory: '/etc/ansible/aws_ec2.yaml', playbook: '/etc/ansible/playbook/deployment_with_infra.yml'
+            }
+        }
+        
+        stage('Monitoring') {
+            steps {
+                echo 'Hello Deploy Phase'
+                build 'emp_dashboard_monitoring'
+            }
+        }
+        stage('Slack Message') {
+            steps {
+                slackSend channel: '#devops-alerts',
+                color: 'good',
+                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}"
+      }
+    }
+    }
+    post { 
+        always { 
+            cleanWs()
+        }
+    }
+}
