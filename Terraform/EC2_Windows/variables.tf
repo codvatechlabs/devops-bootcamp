@@ -31,8 +31,6 @@ variable "subnet_name" {
 variable "tag_values" {
   type = map(any)
   default = {
-    "Name"             = "Windows_Terraform_Demo",
-    "Created_By"       = "Terraform_Automation",
-    "Application_Name" = "Terraform_Demo"
+    "Name"             = "Windows_Terraform_Demo"
   }
 }

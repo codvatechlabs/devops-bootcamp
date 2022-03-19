@@ -5,13 +5,11 @@ resource "aws_instance" "ec2_terraform" {
     terraform.workspace,
     lookup(var.instance_type, "default", ""),
   )
-
-  root_block_device {
-    volume_type = var.volume_type
-    volume_size = var.volume_size
-    encrypted   = "true"
+  #tags = var.tag_values
+  tags = {
+    Name = terraform.workspace
   }
-  tags                   = var.tag_values
+
   key_name               = var.ec2_key_name
   subnet_id              = var.subnet_name
   vpc_security_group_ids = [aws_security_group.allow_http.id]
