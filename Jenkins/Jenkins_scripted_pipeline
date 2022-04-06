@@ -1,0 +1,14 @@
+node{
+	stage('Build'){
+		sh 'echo DevOps Build Phase'
+	}
+	
+	stage('Deploy'){
+		sh 'echo DevOps Deploy Phase'
+	}
+
+	stage('Test'){
+		sh 'echo DevOps Test Phase'
+	}
+
+}
