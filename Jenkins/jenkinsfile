@@ -2,21 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Stage_01') {
+        stage('Build') {
             steps {
-                echo 'Hello World - Stage 01'
+                echo 'I am in Build Phase'
             }
         }
         
-        stage('Stage_02') {
+        stage('Test') {
             steps {
-                echo 'Hello World - Stage 02'
+                echo 'I am in Test Phase'
             }
         }
         
-        stage('Stage_03') {
+        stage('Deploy') {
             steps {
-                echo 'Hello World - Stage 03'
+                echo 'I am in Deploy Phase'
             }
         }
     }
