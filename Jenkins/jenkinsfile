@@ -27,7 +27,6 @@ pipeline {
         }
         stage('Monitoring') {
             steps {
-                echo 'Hello Monitoring Phase'
                 build 'url-monitoring-job'
             }
         }
