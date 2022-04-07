@@ -31,5 +31,11 @@ pipeline {
                 sh 'aws s3 ls'
             }
         }
+        stage('Monitoring') {
+            steps {
+                echo 'Hello Monitoring Phase'
+                build 'url-monitoring-job'
+            }
+        }
     }
 }
