@@ -1,0 +1,41 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Hello Continuous Build Phase'
+                checkout changelog: false, poll: false, scm: [$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/CodvaTech-Labs/java_crud_demo.git']]]
+                sh '''
+                cd CrudDemoWithMySql
+                mvn --version
+                mvn clean
+                mvn deploy
+                '''
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Hello Continuous Deploy Phase'
+                ansiblePlaybook credentialsId: 'asnible-user', installation: 'Ansible', playbook: '/etc/ansible/playbook/demo_deployment.yml'
+            }  
+        }
+        stage('Monitoring') {
+            steps {
+                echo 'Hello Continuous Monitoring  Phase'
+                build 'qa_dashboard_url_monitoring'
+                    }
+                }
+        stage('Slack Message') {
+            steps {
+                slackSend channel: '#devops-alerts',
+                color: 'good',
+                message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}"
+      }
+    }
+    }
+    post { 
+        always { 
+            cleanWs()
+        }
+    }
+}
