@@ -16,13 +16,13 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Hello Continuous Deploy Phase'
-                ansiblePlaybook credentialsId: 'asnible-user', installation: 'Ansible', playbook: '/etc/ansible/playbook/demo_deployment.yml'
+                ansiblePlaybook credentialsId: 'asnible-user', installation: 'Ansible', playbook: '/etc/ansible/playbook/deployment.yml'
             }  
         }
         stage('Monitoring') {
             steps {
                 echo 'Hello Continuous Monitoring  Phase'
-                build 'qa_dashboard_url_monitoring'
+                build 'ci_cid_url_monitoring'
                     }
                 }
         stage('Slack Message') {
