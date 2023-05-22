@@ -1,0 +1,13 @@
+{
+  "Id": "Policy1684758372935",
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Stmt1684758371448",
+      "Action": "s3:*",
+      "Effect": "Allow",
+      "Resource": "arn:aws:s3:::ctl-may-batch-2023",
+      "Principal": "*"
+    }
+  ]
+}
