@@ -22,7 +22,6 @@ pipeline {
         stage('VersionCheck') {
             steps {
                 echo 'I am in Version Phase'
-                sh 'aws s3 ls'
             }
         }
         stage('Monitoring') {
